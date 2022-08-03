@@ -8,13 +8,11 @@ linters-settings:
 
 linters:
   disable-all: true
-
-enable:
+  enable:
   - goimports
   - deadcode
   - errcheck
   - gocognit
-  - gocritic
   - gocyclo
   - gofmt
   - govet
