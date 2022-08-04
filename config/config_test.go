@@ -1,7 +1,9 @@
 package config
 
-import "fmt"
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestNew(t *testing.T) {
 	wantPort := 3333
