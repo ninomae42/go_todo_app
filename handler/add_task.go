@@ -15,7 +15,7 @@ type AddTask struct {
 	Validator *validator.Validate
 }
 
-func (at *AddTask) ServerHTTP(w http.ResponseWriter, r *http.Request) {
+func (at *AddTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	var b struct {
@@ -32,7 +32,7 @@ func (at *AddTask) ServerHTTP(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		RespondJSON(ctx, w, &ErrResponse{
 			Message: err.Error(),
-		}, http.StatusInternalServerError)
+		}, http.StatusBadRequest)
 		return
 	}
 
