@@ -109,5 +109,4 @@ func TestRepository_AddTask(t *testing.T) {
 	if err := r.AddTask(ctx, xdb, okTask); err != nil {
 		t.Errorf("want no error, but got %v", err)
 	}
-
 }
