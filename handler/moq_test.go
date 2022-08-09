@@ -11,7 +11,7 @@ import (
 
 // Ensure, that ListTaskServiceMock does implement ListTaskService.
 // If this is not the case, regenerate this file with moq.
-var _ ListTaskService = &ListTaskServiceMock{}
+var _ ListTasksService = &ListTaskServiceMock{}
 
 // ListTaskServiceMock is a mock implementation of ListTaskService.
 //
