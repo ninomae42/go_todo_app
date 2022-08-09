@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"net/http"
@@ -17,7 +18,7 @@ func TestNewMux(t *testing.T) {
 
 	wantPort := 33306
 	if _, defined := os.LookupEnv("CI"); defined {
-		wantPort = 33306
+		wantPort = 3306
 	}
 	t.Setenv("DBPort", fmt.Sprint(wantPort))
 
@@ -25,7 +26,8 @@ func TestNewMux(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	sut, cleanup, err := NewMux(r.Context(), cfg)
+	ctx := context.Background()
+	sut, cleanup, err := NewMux(ctx, cfg)
 	if err != nil {
 		t.Fatal(err)
 	}
