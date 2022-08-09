@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"testing"
 
 	"github.com/ninomae42/go_todo_app/config"
@@ -12,6 +14,12 @@ import (
 func TestNewMux(t *testing.T) {
 	w := httptest.NewRecorder()
 	r := httptest.NewRequest(http.MethodGet, "/health", nil)
+
+	wantPort := 33306
+	if _, defined := os.LookupEnv("CI"); defined {
+		wantPort = 33306
+	}
+	t.Setenv("PORT", fmt.Sprint(wantPort))
 
 	cfg, err := config.New()
 	if err != nil {
