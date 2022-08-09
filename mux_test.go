@@ -19,7 +19,7 @@ func TestNewMux(t *testing.T) {
 	if _, defined := os.LookupEnv("CI"); defined {
 		wantPort = 33306
 	}
-	t.Setenv("PORT", fmt.Sprint(wantPort))
+	t.Setenv("DBPort", fmt.Sprint(wantPort))
 
 	cfg, err := config.New()
 	if err != nil {
